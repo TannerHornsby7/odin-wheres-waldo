@@ -1,10 +1,11 @@
 /*
-put the following style rules into #select:
-    select.style.position = "absolute";
-    select.style.width = "80px";
-    select.style.height = "20px";
-    select.style.border = "1px solid black";
-    select.style.backgroundColor = "white";
+put the following style rules into #leader_div:
+    leader_div.style.width = "500px";
+    leader_div.style.height = "800px";
+    leader_div.style.textAlign = "center";
+    leader_div.style.lineHeight = "100px";
+    leader_div.style.fontSize = "100px";
+    leader_div.style.fontFamily = "monospace";
 */
 #time {
     position: absolute;
@@ -37,4 +38,24 @@ put the following style rules into #select:
     height: 20px;
     border: 1px solid black;
     background-color: white;    
+}
+
+#leader_list {
+    position: absolute;
+    width: 500px;
+    height: 700px;
+    background-color: white;
+    text-align: center;
+    line-height: 100px;
+    font-size: 50px;
+    font-family: monospace;
+}
+
+#leader_div {
+    width: 500px;
+    height: 800px;
+    text-align: center;
+    line-height: 100px;
+    font-size: 50px;
+    font-family: monospace;
 }

@@ -4,6 +4,7 @@
 // 3. fix timer
 // 4. integrate firebase
 
+wc = false
 // objs to find (will be imported from firestore)
 let objs = {
     trumpet: [1786, 136],
@@ -48,7 +49,7 @@ function performFind(event) {
 
 // timer function
 function timer() {
-    var count = 60;
+    var count = 5;
     var interval = setInterval(function () {
         // display current count in h1
         // console.log(count);
@@ -64,6 +65,9 @@ function timer() {
             setTimeout(function () {
                 displayLeaders(leaders)
             }, 1000);
+        }
+        if (wc) {
+            clearInterval(interval)
         }
         time.innerHTML = count;
         count--;
@@ -144,6 +148,7 @@ function verify(obj, loc) {
     }
     if (Object.keys(objs).length === 0) {
         alert("You Win!");
+        wc = true;
         // remove the timer
         document.body.removeChild(time);
         // wait 3 seconds
@@ -171,7 +176,6 @@ function dist(x1, y1, x2, y2) {
 function displayLeaders(leaders, name = 'Anon') {
     // disable click listener
     document.removeEventListener("click", performFind);
-
     // clear the document
     document.body.innerHTML = "";       
     // sort the leaders
@@ -182,25 +186,9 @@ function displayLeaders(leaders, name = 'Anon') {
     document.body.style.display = "flex";
     document.body.style.justifyContent = "center";
     document.body.style.alignItems = "center";
-        leader_div.style.width = "500px";
-    leader_div.style.height = "800px";
-    leader_div.style.textAlign = "center";
-    leader_div.style.lineHeight = "100px";
-    leader_div.style.fontSize = "100px";
-    leader_div.style.fontFamily = "monospace";
     leader_div.textContent = "Leader Board";
-    leader_div.id = "leaders";
-    // make a numbered list
+    leader_div.id = "leader_div";
     let leader_list = document.createElement("ol");
-    // add top margin of 100 px
-    leader_list.style.marginTop = "100px";
-    leader_list.style.width = "500px";
-    leader_list.style.height = "700px";
-    leader_list.style.backgroundColor = "white";
-    leader_list.style.textAlign = "center";
-    leader_list.style.lineHeight = "100px";
-    leader_list.style.fontSize = "50px";
-    leader_list.style.fontFamily = "monospace";
     leader_list.id = "leader_list";
     leader_div.appendChild(leader_list);
     document.body.appendChild(leader_div);
@@ -221,9 +209,6 @@ function displayLeaders(leaders, name = 'Anon') {
 function promptName() {
     // disable the box click listener
     document.removeEventListener("click", performFind);
-    // disable timer
-    clearInterval(interval);
-
     let name = prompt("Please enter your name", "Anon");
     displayLeaders(leaders, name);
 }
