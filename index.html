@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Where's Waldo</title>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+
+      // TODO: Add SDKs for Firebase products that you want to use
+
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyBQmyoW-Nw2AyLTjswVI5SjqgvSep3DOo0",
+
+        authDomain: "waldo-c3bed.firebaseapp.com",
+
+        databaseURL: "https://waldo-c3bed-default-rtdb.firebaseio.com",
+
+        projectId: "waldo-c3bed",
+
+        storageBucket: "waldo-c3bed.appspot.com",
+
+        messagingSenderId: "27510620932",
+
+        appId: "1:27510620932:web:21f58b14f33cb79a558651",
+      };
+
+      // Initialize Firebase
+
+      const app = initializeApp(firebaseConfig);
+    </script>
+    <script src="comps.js"></script>
     <script src="index.js"></script>
-</head>
-<body>
-    <img src="waldo.jpg" alt="Waldo" usemap="#waldo">
-</body>
+  </head>
+  <body></body>
 </html>

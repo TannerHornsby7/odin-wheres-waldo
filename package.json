@@ -1,0 +1,19 @@
+{
+  "name": "odin-wheres-waldo",
+  "version": "1.0.0",
+  "description": "wheres waldo web game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TannerHornsby7/odin-wheres-waldo.git"
+  },
+  "author": "Tanner Hornsby",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TannerHornsby7/odin-wheres-waldo/issues"
+  },
+  "homepage": "https://github.com/TannerHornsby7/odin-wheres-waldo#readme"
+}

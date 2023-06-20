@@ -4,6 +4,32 @@
 // 3. fix timer
 // 4. integrate firebase
 
+// use firebase from script tag initialization
+
+const db = firebase.firestore();
+let leaders = {};
+/*
+    "Anon5": 60
+    "Anon4": 60
+    "Anon3": 60
+    "Anon2": 60
+    "Anon1": 60
+    "Anon": 60
+    "Anon6": 60
+    "Anon7": 60
+    "Anon8": 60
+    "Anon9": 60
+*/
+// get the top 10 lowest scores from the leaderboard collection
+db.collection("leaderboard").orderBy("score", "asc").limit(10).get().then(function (querySnapshot) {
+    querySnapshot.forEach(function (doc) {
+        // doc.data() is never undefined for query doc snapshots
+        leaders[doc.data().name] = doc.data().score;
+    });
+});
+
+
+
 wc = false
 // objs to find (will be imported from firestore)
 let objs = {
@@ -12,31 +38,27 @@ let objs = {
     yeti: [2816, 232]
 };
 
-// 10 random numers 1-60 times with user names as the keys, some will be Anon with a rand num
-let leaders = {
-    "Anon1": 10,
-    "Hal": 23,
-    "Anon2": 30,
-    "jo1ly": 35,
-    "Anon142": 35,
-    "Josie": 40,
-    "Anon3": 45,
-    "Bill": 50,
-    "Anon4": 55,
-    "Anon5": 60
-}
-
 // mount initial event listener
 document.addEventListener("click", performFind);
 
 // mount timer div
 var time = document.createElement("div");
+time.style.position = 'absolute';
+time.style.top = '0px';
+time.style.right = '40%';
 time.textContent = "60";
 time.id = "time";
 
 // place the time in the top center of the screen when
 // the dom is loaded
 document.addEventListener("DOMContentLoaded", function () {
+    // load image
+    var img = document.createElement("img");
+    img.style.position = 'absolute'
+    img.style.top = '0px'
+    img.src = "waldo.jpg"
+    img.id = "waldo"
+    document.body.appendChild(img);
     document.body.appendChild(time);
     timer();
 });
@@ -49,7 +71,7 @@ function performFind(event) {
 
 // timer function
 function timer() {
-    var count = 5;
+    var count = 60;
     var interval = setInterval(function () {
         // display current count in h1
         // console.log(count);
@@ -177,13 +199,14 @@ function displayLeaders(leaders, name = 'Anon') {
     // disable click listener
     document.removeEventListener("click", performFind);
     // clear the document
-    document.body.innerHTML = "";       
+    document.body.innerHTML = "";      
     // sort the leaders
     let sorted = Object.keys(leaders).sort(function (a, b) { return leaders[a] - leaders[b] });
     // display the leaders
     let leader_div = document.createElement("div");
     // make the body a flexbox and center the div
     document.body.style.display = "flex";
+    document.body.style.flexDirection = "column";
     document.body.style.justifyContent = "center";
     document.body.style.alignItems = "center";
     leader_div.textContent = "Leader Board";

@@ -1,16 +1,14 @@
 /*
-put the following style rules into #leader_div:
-    leader_div.style.width = "500px";
-    leader_div.style.height = "800px";
-    leader_div.style.textAlign = "center";
-    leader_div.style.lineHeight = "100px";
-    leader_div.style.fontSize = "100px";
-    leader_div.style.fontFamily = "monospace";
+make the body a flex box
 */
+/* body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
 #time {
-    position: absolute;
-    top: 0px;
-    left: 50%;
     width: 100px;
     height: 100px;
     border: 1px solid black;
@@ -58,4 +56,46 @@ put the following style rules into #leader_div:
     line-height: 100px;
     font-size: 50px;
     font-family: monospace;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    text-align: center;
+    line-height: 100px;
+    font-size: 50px;
+    font-family: sans-serif;
+}
+
+.button {
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+    color: whitesmoke;
+    text-align: center;
+    line-height: 100px;
+    font-size: 50px;
+    font-family: monospace;
+}
+
+.button:hover {
+    background-color: black;
+    border: 1px solid whitesmoke;
+    cursor: pointer;
+}
+
+#start {
+    background-color: darkgreen;
+}
+
+#reset {
+    background-color: brown;
+}
+
+#leader {
+    background-color: black;
+    font-size: 25px;
 }
